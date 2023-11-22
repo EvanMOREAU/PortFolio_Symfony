@@ -11,8 +11,11 @@ class DefaultController extends AbstractController
 {
     public function index(): Response
     {
+        $fullUrl = $_SERVER['REQUEST_URI'];
+
         return $this->render('base.html.twig', [
             'controller_name' => 'DefaultController',
+            'url'             => $fullUrl,
         ]);
     }
 }

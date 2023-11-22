@@ -8,6 +8,68 @@
             <link rel='stylesheet' type='text/css' media='screen' href='addons/css/base.css'>
             <link rel='stylesheet' type='text/css' media='screen' href='addons/css/nav.css'>
             <link rel='stylesheet' type='text/css' media='screen' href='addons/css/name.css'>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+            <style>
+                .gallery {
+                    --g: 8px;
+                    /* the gap */
+                    --s: 500px;
+                    /* the size */
+                    display: grid;
+                    border-radius: 50%;
+                }
+
+                .gallery>img {
+                    grid-area: 1/1;
+                    width: var(--s);
+                    aspect-ratio: 1;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    transform: translate(var(--_x, 0), var(--_y, 0));
+                    cursor: pointer;
+                    font-size: 0;
+                    z-index: 0;
+                    transition: .3s, z-index 0s .3s;
+                }
+
+                .gallery img:hover {
+                    font-size: var(--s);
+                    z-index: 1;
+                    transition: transform .2s, font-size .3s .2s, z-index 0s;
+                }
+
+                .gallery:hover img {
+                    transform: translate(0, 0);
+                }
+
+                .gallery>img:nth-child(1) {
+                    clip-path: polygon(50% 50%, .5em 1.2em, 0 1em, 0 0, 100% 0, 100% 1em, calc(100% - .5em) 1.2em);
+                    --_y: calc(-1*var(--g))
+                }
+
+                .gallery>img:nth-child(2) {
+                    clip-path: polygon(50% 50%, calc(100% - 1.2em) 0.5em, calc(100% - 1em) 0, 100% 0, 100% 100%, calc(100% - 1em) 100%, calc(100% - 1.2em) calc(100% - .5em));
+                    --_x: var(--g)
+                }
+
+                .gallery>img:nth-child(3) {
+                    clip-path: polygon(50% 50%, calc(100% - .5em) calc(100% - 1.2em), 100% calc(100% - 1.2em), 100% 100%, 0 100%, 0 calc(100% - 1em), .5em calc(100% - 1.2em));
+                    --_y: var(--g)
+                }
+
+                .gallery>img:nth-child(4) {
+                    clip-path: polygon(50% 50%, 1.2em .5em, 1em 0, 0 0, 0 100%, 1em 100%, 1.2em calc(100% - .5em));
+                    --_x: calc(-1*var(--g))
+                }
+
+                body {
+                    margin: 0;
+                    min-height: 100vh;
+                    display: grid;
+                    place-content: center;
+                    background: #313131;
+                }
+            </style>
         {% endblock %}
 
 
@@ -23,9 +85,9 @@
 
             <!-- particles.js container -->
             <div id="particles-js">
-                <menu class="menu">
+                {# <menu class="menu">
                     
-                    <button class="menu__item active">
+                    <button class="menu__item {% if url == '/'  %}active{% endif %}" onClick='redirectToPage('/')'>
                         <div class="menu__icon" >
 
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.1 145" >
@@ -43,10 +105,10 @@
                             </svg>
 
                         </div>
-                        <strong class="menu__text active">Accueil</strong>
+                        <strong class="menu__text {% if url == '/'  %}active{% endif %}">Accueil</strong>
                     </button>
 
-                    <button class="menu__item">
+                    <button class="menu__item {% if url == '/parcour'  %}active{% endif %}"  onClick='redirectToPage('/parcour')'>
                         <div class="menu__icon" >
 
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.1 145">
@@ -61,14 +123,13 @@
                                 <path id="strategy-cir1" stroke-width="0" fill="currentColor" d="M32.4,37.5c0,5.8-4.7,10.5-10.5,10.5s-10.5-4.7-10.5-10.5S16.1,27,21.9,27S32.4,31.7,32.4,37.5z"/>
                                 <path id="strategy-cir2" stroke-width="0" fill="currentColor" d="M102.3,23.5c0,5.8-4.7,10.5-10.5,10.5s-10.5-4.7-10.5-10.5S86,13,91.8,13S102.3,17.7,102.3,23.5z"/>
                                 <path id="strategy-cir3" stroke-width="0" fill="currentColor" d="M169.6,37.5c0,5.8-4.7,10.5-10.5,10.5s-10.5-4.7-10.5-10.5S153.3,27,159.1,27S169.6,31.7,169.6,37.5z"/>
-                            
                             </svg>
 
                         </div>
-                        <strong class="menu__text">strategy</strong>
+                        <strong class="menu__text {% if url == '/parcour'  %}active{% endif %}">Parcour</strong>
                     </button>
 
-                    <button class="menu__item">
+                    <button class="menu__item {% if url == '/'  %}active{% endif %}" onClick=''>
                         <div class="menu__icon" >
 
                             <svg class="icon"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.1 145" >
@@ -91,10 +152,10 @@
                             </svg>
 
                         </div>
-                        <strong class="menu__text">period</strong>
+                        <strong class="menu__text {% if url == '/t'  %}active{% endif %}">period</strong>
                     </button>
 
-                    <button class="menu__item">
+                    <button class="menu__item {% if url == '/'  %}active{% endif %}">
                         <div class="menu__icon" >
 
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.1 145" >
@@ -112,10 +173,10 @@
                             </svg>
 
                         </div>
-                        <strong class="menu__text">security</strong>
+                        <strong class="menu__text {% if url == '/j'  %}active{% endif %}">security</strong>
                     </button>
 
-                    <button class="menu__item">
+                    <button class="menu__item {% if url == '/'  %}active{% endif %}">
                         <div class="menu__icon" >
 
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.1 145" >
@@ -134,10 +195,10 @@
                             </svg>
 
                         </div>
-                        <strong class="menu__text">settings</strong>
+                        <strong class="menu__text {% if url == '/k'  %}active{% endif %}">settings</strong>
                     </button>
 
-                </menu>
+                </menu> #}
                 <!-- Explanation in JS tab -->
 
                 <!-- The two texts -->
@@ -145,7 +206,7 @@
                     <span id="text1"></span>
                     <span id="text2"></span>
                 </div>
-
+                
                 <!-- The SVG filter used to create the merging effect -->
                 <svg id="filters">
                     <defs>
@@ -155,12 +216,17 @@
                         </filter>
                     </defs>
                 </svg>
-            </div>
-
+                
+            <div class="header">  
+                <!-- Navbar -->
+           
+        </div>
 
             
 
             {% block javascripts %}
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+                <script src="addons/js/redirectToPage.js"></script>
                 <script src="addons/js/nav.js"></script>
                 <script src="addons/js/name.js"></script>
 
@@ -191,5 +257,75 @@
             {% endblock %}
 
         {% endblock %}
+ <nav id="navbar">
+                <ul class="navbar-items flexbox-col">
+                    <li class="navbar-logo flexbox-left">
+                    <a class="navbar-item-inner flexbox">
+                        {# <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 1438.88 1819.54">
+                        <polygon points="925.79 318.48 830.56 0 183.51 1384.12 510.41 1178.46 925.79 318.48"/>
+                        <polygon points="1438.88 1663.28 1126.35 948.08 111.98 1586.26 0 1819.54 1020.91 1250.57 1123.78 1471.02 783.64 1663.28 1438.88 1663.28"/>
+                        </svg> #}
+                        <img src='uploads/images/Evan.png' width='75%'>
+                    </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
+                    <a class="navbar-item-inner flexbox-left" href='/'>
+                        <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="search-outline"></ion-icon>
+                        </div>
+                        <span class="link-text">Accueil</span>
+                    </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
+                    <a class="navbar-item-inner flexbox-left" href='/studies'>
+                        <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="home-outline"></ion-icon>
+                        </div>
+                        <span class="link-text">Parcour</span>
+                    </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
+                    <a class="navbar-item-inner flexbox-left">
+                        <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="folder-open-outline"></ion-icon>
+                        </div>
+                        <span class="link-text">Projects</span>
+                    </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
+                    <a class="navbar-item-inner flexbox-left">
+                        <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="pie-chart-outline"></ion-icon>
+                        </div>
+                        <span class="link-text">Dashboard</span>
+                    </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
+                    <a class="navbar-item-inner flexbox-left">
+                        <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="people-outline"></ion-icon>
+                        </div>
+                        <span class="link-text">Team</span>
+                    </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
+                    <a class="navbar-item-inner flexbox-left">
+                        <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                        </div>
+                        <span class="link-text">Support</span>
+                    </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
+                    <a class="navbar-item-inner flexbox-left">
+                        <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="settings-outline"></ion-icon>
+                        </div>
+                        <span class="link-text">Settings</span>
+                    </a>
+                    </li>
+                    
+                </ul>
+            </nav>
     </body>
 </html>
