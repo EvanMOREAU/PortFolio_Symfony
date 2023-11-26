@@ -1,0 +1,106 @@
+  .button {
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    font-size: 17px;
+    background: #ff5900;
+    color: black;
+    padding: 0.7em 5.5em;
+    display: flex;
+    align-items: center;
+    border: 2px solid #66da4300;
+    border-radius: 5em;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    border: 2px solid #ff5900;
+    background: #00000000;
+    color: #ff5900;
+  }
+  
+  .button:active {
+    border: 2px solid #66da4300;
+    background: #ff5900;
+    color: black;
+  }
+  .button2, .button2:visited {
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 30%;
+    font-size: 17px;
+    background: #ff5900;
+    color: black;
+    padding: 0.7em 5.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #66da4300;
+    border-radius: 5em;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+  .button2:hover{
+    border: 2px solid #ff5900;
+    background: #00000000;
+    color: #ff5900;
+  }
+  
+  .button2:active{
+    border: 2px solid #66da4300;
+    background: #ff5900;
+    color: black;
+  }
+
+
+  .input {
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #66da4300;
+    border-bottom: 1px solid #ff5900;
+    outline: none;
+    background-color: transparent;
+    color: #ff5900;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 0.2s;
+  }
+  
+  .input:focus {
+    border: 1px solid #66da4300;
+    border-bottom: 1px solid #ff5900;
+    background-color: transparent;
+    color: white;
+  }
+  
+  .input::placeholder {
+    color: #9b725b;
+  }
+  
+  .textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    width: calc(100% - 10px);
+    padding: 8px;
+    height: 100px;
+    margin-bottom: 20px;
+    border: 1px solid #66da4300;
+    border-bottom: 1px solid #ff5900;
+    outline: none;
+    background-color: transparent;
+    color: #ff5900;
+  }
+  
+  .textarea::placeholder {
+    color: #9b725b;
+  }
+  
+  .textarea:focus {
+    border: 1px solid #66da4300;
+    border-bottom: 1px solid #ff5900;
+    background-color: transparent;
+    color: white;
+  }

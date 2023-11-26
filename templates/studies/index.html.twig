@@ -1,22 +1,22 @@
-{% extends 'base.html.twig' %}
+  {% extends 'base.html.twig' %}
 
-{% block title %}Hello StudiesController!{% endblock %}
+  {% block title %}Hello StudiesController!{% endblock %}
 
-{% block body %}
-<style>
-   body {	
-  margin: 0;
-  padding: 0;
-  background: #222222;
-  
-  color: rgb(50,50,50);
-  font-family: 'Open Sans', sans-serif;
-  font-size: 112.5%;
-  line-height: 1.6em;
-}
+  {% block body %}
+  <style>
+    body {	
+    margin: 0;
+    padding: 0;
+    background: #222222;
+    color: rgb(50,50,50);
+    min-height: 100vh; /* Hauteur minimale de 100% de la vue (viewport height) */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 112.5%;
+    line-height: 1.6em;
+    height
+  }
 
-/* ================ The Timeline ================ */
-
+  /* ================ The Timeline ================ */
 .timeline {
   position: relative;
   width: 660px;
@@ -24,314 +24,312 @@
   margin-top: 20px;
   padding: 1em 0;
   list-style-type: none;
+  text-align: center; /* Alignement horizontal au centre */
 }
 
-.timeline:before {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  content: ' ';
-  display: block;
-  width: 6px;
-  height: 100%;
-  margin-left: -3px;
-  background: rgb(80,80,80);
-  background: -moz-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(100%,rgba(125,185,232,1)));
-  background: -webkit-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
-  background: -o-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
-  background: -ms-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
-  background: linear-gradient(to bottom, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
-  
-  z-index: 5;
-}
 
-.timeline li {
-  padding: 1em 0;
-}
+  .timeline:before {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    content: ' ';
+    display: block;
+    width: 6px;
+    height: 100%;
+    margin-left: -3px;
+    background: rgb(80,80,80);
+    background: -moz-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(100%,rgba(125,185,232,1)));
+    background: -webkit-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+    background: -o-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+    background: -ms-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+    background: linear-gradient(to bottom, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+    
+    z-index: 5;
+  }
 
-.timeline li:after {
-  content: "";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
+  .timeline li {
+    padding: 1em 0;
+  }
 
-.direction-l {
-  position: relative;
-  width: 300px;
-  float: left;
-  text-align: right;
-}
+  .timeline li:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
 
-.direction-r {
-  position: relative;
-  width: 300px;
-  float: right;
-}
+  .direction-l {
+    position: relative;
+    width: 300px;
+    float: left;
+    text-align: right;
+  }
 
-.flag-wrapper {
-  position: relative;
-  display: inline-block;
-  
-  text-align: center;
-}
+  .direction-r {
+    position: relative;
+    width: 300px;
+    float: right;
+  }
 
-.flag {
-  position: relative;
-  display: inline;
-  background: rgb(248,248,248);
-  padding: 6px 10px;
-  border-radius: 5px;
-  
-  font-weight: 600;
-  text-align: left;
-}
+  .flag-wrapper {
+    position: relative;
+    display: inline-block;
+    
+    text-align: center;
+  }
 
-.direction-l .flag {
-  -webkit-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-  -moz-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-  box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-}
+  .flag {
+    position: relative;
+    display: inline;
+    background: rgb(248,248,248);
+    padding: 6px 10px;
+    border-radius: 5px;
+    width: auto;
+    font-weight: 600;
+    text-align: left;
+  }
 
-.direction-r .flag {
-  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-  -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-}
+  .direction-l .flag {
+    -webkit-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+    -moz-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+    box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+  }
 
-.direction-l .flag:before,
-.direction-r .flag:before {
-  position: absolute;
-  top: 50%;
-  right: -40px;
-  content: ' ';
-  display: block;
-  width: 12px;
-  height: 12px;
-  margin-top: -10px;
-  background: #fff;
-  border-radius: 10px;
-  border: 4px solid rgb(255,80,80);
-  z-index: 10;
-}
+  .direction-r .flag {
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+  }
 
-.direction-r .flag:before {
-  left: -40px;
-}
+  .direction-l .flag:before,
+  .direction-r .flag:before {
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    content: ' ';
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin-top: -10px;
+    background: #fff;
+    border-radius: 10px;
+    border: 4px solid rgb(255,80,80);
+    z-index: 10;
+  }
 
-.direction-l .flag:after {
-  content: "";
-  position: absolute;
-  left: 100%;
-  top: 50%;
-  height: 0;
-  width: 0;
-  margin-top: -8px;
-  border: solid transparent;
-  border-left-color: rgb(248,248,248);
-  border-width: 8px;
-  pointer-events: none;
-}
+  .direction-r .flag:before {
+    left: -40px;
+  }
 
-.direction-r .flag:after {
-  content: "";
-  position: absolute;
-  right: 100%;
-  top: 50%;
-  height: 0;
-  width: 0;
-  margin-top: -8px;
-  border: solid transparent;
-  border-right-color: rgb(248,248,248);
-  border-width: 8px;
-  pointer-events: none;
-}
+  .direction-l .flag:after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    height: 0;
+    width: 0;
+    margin-top: -8px;
+    border: solid transparent;
+    border-left-color: rgb(248,248,248);
+    border-width: 8px;
+    pointer-events: none;
+  }
 
-.time-wrapper {
-  display: inline;
-  
-  line-height: 1em;
-  font-size: 0.66666em;
-  color: rgb(250,80,80);
-  vertical-align: middle;
-}
+  .direction-r .flag:after {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    height: 0;
+    width: 0;
+    margin-top: -8px;
+    border: solid transparent;
+    border-right-color: rgb(248,248,248);
+    border-width: 8px;
+    pointer-events: none;
+  }
 
-.direction-l .time-wrapper {
-  float: left;
-}
+  .time-wrapper {
+    display: inline;
+    
+    line-height: 1em;
+    font-size: 0.66666em;
+    color: rgb(250,80,80);
+    vertical-align: middle;
+  }
 
-.direction-r .time-wrapper {
-  float: right;
-}
+  .direction-l .time-wrapper {
+    float: left;
+  }
 
-.time {
-  display: inline-block;
-  padding: 4px 6px;
-  background: rgb(248,248,248);
-}
+  .direction-r .time-wrapper {
+    float: right;
+  }
 
-.desc {
-  margin: 1em 0.75em 0 0;
-  color: #f7f7f7;
-  font-size: 0.77777em;
-  font-style: italic;
-  line-height: 1.5em;
-}
+  .time {
+    display: inline-block;
+    padding: 4px 6px;
+    background: rgb(248,248,248);
+  }
 
-.direction-r .desc {
-  margin: 1em 0 0 0.75em;
-}
+  .desc {
+    margin: 1em 0.75em 0 0;
+    color: #f7f7f7;
+    font-size: 0.77777em;
+    font-style: italic;
+    line-height: 1.5em;
+  }
 
-/* ================ Timeline Media Queries ================ */
+  .direction-r .desc {
+    margin: 1em 0 0 0.75em;
+  }
 
-@media screen and (max-width: 660px) {
+  /* ================ Timeline Media Queries ================ */
 
-.timeline {
- 	width: 100%;
-	padding: 4em 0 1em 0;
-}
+  @media screen and (max-width: 660px) {
 
-.timeline li {
-	padding: 2em 0;
-}
+  .timeline {
+    width: auto;
+    padding: 4em 0 1em 0;
+  }
 
-.direction-l,
-.direction-r {
-	float: none;
-	width: 100%;
+  .timeline li {
+    padding: 2em 0;
+  }
 
-	text-align: center;
-}
+  .direction-l,
+  .direction-r {
+    float: none;
+    width: 100%;
 
-.flag-wrapper {
-	text-align: center;
-}
+    text-align: center;
+  }
 
-.flag {
-	background: rgb(255,255,255);
-	z-index: 15;
-}
+  .flag-wrapper {
+    text-align: center;
+  }
 
-.direction-l .flag:before,
-.direction-r .flag:before {
-  position: absolute;
-  top: -30px;
-	left: 50%;
-	content: ' ';
-	display: block;
-	width: 12px;
-	height: 12px;
-	margin-left: -9px;
-	background: #fff;
-	border-radius: 10px;
-	border: 4px solid rgb(255,80,80);
-	z-index: 10;
-}
+  .flag {
+    background: rgb(255,255,255);
+    width: 150px;
+    z-index: 15;
+  }
 
-.direction-l .flag:after,
-.direction-r .flag:after {
-	content: "";
-	position: absolute;
-	left: 50%;
-	top: -8px;
-	height: 0;
-	width: 0;
-	margin-left: -8px;
-	border: solid transparent;
-	border-bottom-color: rgb(255,255,255);
-	border-width: 8px;
-	pointer-events: none;
-}
+  .direction-l .flag:before,
+  .direction-r .flag:before {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    content: ' ';
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin-left: -9px;
+    background: #fff;
+    border-radius: 10px;
+    border: 4px solid rgb(255,80,80);
+    z-index: 10;
+  }
 
-.time-wrapper {
-	display: block;
-	position: relative;
-	margin: 4px 0 0 0;
-	z-index: 14;
-}
+  .direction-l .flag:after,
+  .direction-r .flag:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -8px;
+    height: 0;
+    width: 0;
+    margin-left: -8px;
+    border: solid transparent;
+    border-bottom-color: rgb(255,255,255);
+    border-width: 8px;
+    pointer-events: none;
+  }
 
-.direction-l .time-wrapper {
-	float: none;
-}
+  .time-wrapper {
+    display: block;
+    position: relative;
+    margin: 4px 0 0 0;
+    z-index: 14;
+  }
 
-.direction-r .time-wrapper {
-	float: none;
-}
+  .direction-l .time-wrapper {
+    float: none;
+  }
 
-.desc {
-	position: relative;
-	margin: 1em 0 0 0;
-	padding: 1em;
-	background: rgb(245,245,245);
-	-webkit-box-shadow: 0 0 1px rgba(0,0,0,0.20);
-	-moz-box-shadow: 0 0 1px rgba(0,0,0,0.20);
-	box-shadow: 0 0 1px rgba(0,0,0,0.20);
-	
-  z-index: 15;
-}
+  .direction-r .time-wrapper {
+    float: none;
+  }
 
-.direction-l .desc,
-.direction-r .desc {
-	position: relative;
-	margin: 1em 1em 0 1em;
-	padding: 1em;
-	
-  z-index: 15;
-}
+  .desc {
+    position: relative;
+    margin: 1em 0 0 0;
+    padding: 1em;
+    background: rgb(245,245,245);
+    -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.20);
+    -moz-box-shadow: 0 0 1px rgba(0,0,0,0.20);
+    box-shadow: 0 0 1px rgba(0,0,0,0.20);
+    
+    z-index: 15;
+  }
 
-}
+  .direction-l .desc,
+  .direction-r .desc {
+    position: relative;
+    margin: 1em 1em 0 1em;
+    padding: 1em;
+    
+    z-index: 15;
+  }
 
-@media screen and (min-width: 400px ?? max-width: 660px) {
+  }
 
-.direction-l .desc,
-.direction-r .desc {
-	margin: 1em 4em 0 4em;
-}
+  @media screen and (min-width: 400px ?? max-width: 660px) {
 
-}
-</style>
+  .direction-l .desc,
+  .direction-r .desc {
+    margin: 1em 4em 0 4em;
+  }
 
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
-  
-<!-- The Timeline -->
+  }
 
-<ul class="timeline">
-
-	<!-- Item 1 -->
-	<li>
-		<div class="direction-r">
-			<div class="flag-wrapper">
-				<span class="flag">Collège les Courtils</span>
-				<span class="time-wrapper"><span class="time">2015 - 2019</span></span>
-			</div>
-			<div class="desc">Optention du Brevet des collèges (2019)</div>
-		</div>
-	</li>
-  
-	<!-- Item 2 -->
-	<li>
-		<div class="direction-l">
-			<div class="flag-wrapper">
-				<span class="flag">Lycée Agricole</span>
-				<span class="time-wrapper"><span class="time">2019 - 2022</span></span>
-			</div>
-			<div class="desc">Optention du BAC STAV (2022)</div>
-		</div>
-	</li>
-
-	<!-- Item 3 -->
-	<li>
-		<div class="direction-r">
-			<div class="flag-wrapper">
-				<span class="flag">BTS SIO</span>
-				<span class="time-wrapper"><span class="time">2022 - 2024</span></span>
-			</div>
-			<div class="desc">En cours</div>
-		</div>
-	</li>
-  
-</ul>
-
-{% endblock %}
+  p {
+    color: white;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  </style><br>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+<center>
+  <div class="cardpres">
+    <img src='/uploads/images/Evan.png' class='img'>
+    <span>Bonjour, je m'appelle Evan Moreau !</span>
+    <p class="info center-text">Je suis actuellement étudiant en BTS SIO 1ère année, au lycée Notre Dame de La Providence à Avranches. Je suis né le 27 décembre 2004 à Dreux en Eure-et-Loir.
+      Passioné par l'informatique, comme une grande partie de ma génération, je me suis lancé à 15 ans dans le développement en commençant par le LUA sur la plateforme FiveM.
+      J'ai, avant de venir à Avranches, passé un BAC STAV au Campus Métiers Nature de Coutances, avec mention assez-bien. Le monde du développement est pour moi l'avenir de l'informatique, 
+      puisqu'il ne cesse d'évoluer et offre de plus en plus de possibilités. C'est dans cette optique que j'essaie de réaliser le plus de projets possibles en lien avec ce domaine. Cependant, 
+      après presque une année scolaire d'études dans l'option SLAM du BTS SIO, je me rapproche plus du développement web, et plus particulièrement du Front-End. C'est la raison pour laquelle, 
+      nous nous sommes engagés, avec plusieurs de mes camarades, sur des projets variés, avec l'intention de nous surpasser, pour proposer quelque chose de toujours plus esthétique et facile d'utilisation.
+    </p>
+  </div>
+</center>
+  <p>
+  <ul class="timeline">
+    {% for studie in studies %}
+        <!-- Item -->
+        <li>
+            <div class="{% if loop.index is divisible by(2) %}direction-l{% else %}direction-r{% endif %}">
+                <div class="flag-wrapper">
+                    <span class="flag">{{ studie.place }}</span>
+                    <span class="time-wrapper"><span class="time">{{ studie.years }}</span></span>
+                </div>
+                <div class="desc">{{ studie.text }}<br>{{ studie.address }}{% if studie.website != '' %}<br><a href='{{ studie.website }}'>Site Internet</a>{% endif %}</div>
+                    <a class="button2" href='/studies/{{ studie.id }}/edit'>Modifier</a>
+            </div>
+        </li>
+    {% endfor %}
+  </ul>
+  {% endblock %}

@@ -27,8 +27,9 @@ class Studies
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $website = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $img_path = null;
+    #[ORM\Column(length: 255)]
+    private ?string $years = null;
+
 
     public function getId(): ?int
     {
@@ -83,15 +84,16 @@ class Studies
         return $this;
     }
 
-    public function getImgPath(): ?string
+    public function getYears(): ?string
     {
-        return $this->img_path;
+        return $this->years;
     }
 
-    public function setImgPath(?string $img_path): static
+    public function setYears(string $years): static
     {
-        $this->img_path = $img_path;
+        $this->years = $years;
 
         return $this;
     }
+
 }

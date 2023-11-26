@@ -1,0 +1,27 @@
+{{ form_start(form) }}
+<div class="form">
+    {{ form_row(form._token) }}
+    {{ form_row(form.name, { 'attr': { 'autocomplete': 'off', 'class': 'input', 'placeholder': 'Lieu', 'type': 'text' } }) }}
+
+    <div class="drop-container" id="dropContainer" dropzone>
+        <span class="drop-title">Déposez le fichier ici</span>
+        <p class="form-paragraph">
+        {% if form.pdf.vars.value is not empty %}
+            {{ form.pdf.vars.value.name }}
+        {% else %}
+            Le fichier doit être un PDF
+        {% endif %}
+        </p>
+        <label for="file-input" class="drop-area">
+            <input type="file" accept="application/pdf" required="" id="file-input" name="{{ form.pdf.vars.full_name }}" style="display: none;">
+            <span class="button">Choisir un fichier</span>
+        </label>
+    </div>
+
+    <p id="file-name" class="file-name">
+
+    </p>
+ 
+    <center><button class="button">Sauvegarder</button></center>
+</div>
+{{ form_end(form, {'render_rest': false}) }}

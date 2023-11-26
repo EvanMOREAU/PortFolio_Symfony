@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+            {# ->add('address')
+            ->add('text')
+            ->add('website')
+            ->add('img_path') #}
+    <form class="form">
+        {{ form_row(form._token) }}
+        {{ form_row(form.place, { 'attr': { 'autocomplete': 'off', 'class': 'input', 'placeholder': 'Lieu', 'type': 'text' } }) }}
+        {{ form_row(form.address, { 'attr': { 'autocomplete': 'off', 'class': 'input', 'placeholder': 'Adresse', 'type': 'text' } }) }}
+        {{ form_row(form.text, { 'attr': { 'autocomplete': 'off', 'class': 'input', 'placeholder': 'Texte', 'type': 'text' } }) }}
+        {{ form_row(form.website, { 'attr': { 'autocomplete': 'off', 'class': 'input', 'placeholder': 'Site', 'type': 'text' } }) }}
+        {{ form_row(form.years, { 'attr': { 'autocomplete': 'off', 'class': 'input', 'placeholder': 'Années (XXXX-XXXX)', 'type': 'text' } }) }}
+
+        {# <textarea class="textarea" placeholder="Enter message"></textarea>  #}
+    <center><button class="button">Sauvegarder</button></center>
+</form>
+{{ form_end(form) }}

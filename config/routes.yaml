@@ -4,6 +4,29 @@ index:
 app_login:
     path: /login
     controller: App\Controller\SecurityController::login
-app_studies:
+# Studies #
+app_studies_index:
     path: /studies
     controller: App\Controller\StudiesController::index
+app_studies_new:
+    path: /studies/new
+    controller: App\Controller\StudiesController::new
+app_studies_edit:
+    path: /studies/{id}/edit
+    controller: App\Controller\StudiesController::edit
+app_studies_delete:
+    path: /studies/{id}/delete
+    controller: App\Controller\StudiesController::delete
+# Documentations #
+app_documentations_index:
+    path: /documentations
+    controller: App\Controller\DocumentationsController::index
+app_documentations_new:
+    path: /documentations/new
+    controller: App\Controller\DocumentationsController::new
+app_documentations_edit:
+    path: /documentations/{id}/edit
+    controller: App\Controller\DocumentationsController::edit
+app_documentations_delete:
+    path: /documentations/{id}/delete
+    controller: App\Controller\DocumentationsController::delete

@@ -16,7 +16,7 @@ class StudiesType extends AbstractType
             ->add('address')
             ->add('text')
             ->add('website')
-            ->add('img_path')
+            ->add('years')
         ;
     }
 

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Documentations index{% endblock %}
+
+{% block body %}
+    <h1>Documentations index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Pdf</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for documentation in documentations %}
+            <tr>
+                <td>{{ documentation.id }}</td>
+                <td>{{ documentation.name }}</td>
+                <td>{{ documentation.pdf }}</td>
+                <td>
+                    <a href="{{ path('app_documentations_edit', {'id': documentation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_documentations_new') }}">Create new</a>
+{% endblock %}
