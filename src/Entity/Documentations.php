@@ -27,6 +27,10 @@ class Documentations
     #[ORM\Column(length: 255)]
     private ?string $pdf = null;
 
+    #[ORM\ManyToOne(inversedBy: 'documentations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?DocumentCategory $category = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +56,18 @@ class Documentations
     public function setPdf(string $pdf): static
     {
         $this->pdf = $pdf;
+
+        return $this;
+    }
+
+    public function getCategory(): ?DocumentCategory
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?DocumentCategory $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }

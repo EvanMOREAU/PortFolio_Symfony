@@ -30,3 +30,22 @@ app_documentations_edit:
 app_documentations_delete:
     path: /documentations/{id}/delete
     controller: App\Controller\DocumentationsController::delete
+app_documentations_show:
+    path: '/documentations/doc/{id}'
+    controller: 'App\Controller\DocumentationsController::show'
+# Documentations Category #
+# app_document_category_index:
+#     path: /documentcategory
+#     controller: App\Entity\DocumentCategoryController::index
+# app_document_category_new:
+#     path: /documentcategory/new
+#     controller: App\Entity\DocumentCategoryController::new
+# app_document_category_edit:
+#     path: /documentcategory/{id}/edit
+#     controller: App\Entity\DocumentCategoryController::edit
+# app_document_category_delete:
+#     path: /documentcategory/{id}/delete
+#     controller: App\Entity\DocumentCategoryController::delete
+app_document_category:
+    resource: ../src/Controller/DocumentCategoryController.php
+    type: annotation

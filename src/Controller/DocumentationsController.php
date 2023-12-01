@@ -8,6 +8,7 @@ use App\Form\DocumentationsType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\DocumentationsRepository;
 use Symfony\Component\HttpFoundation\Request;
+use App\Repository\DocumentCategoryRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -58,11 +59,20 @@ class DocumentationsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_documentations_show', methods: ['GET'])]
-    public function show(Documentations $documentation): Response
+    #[Route('/doc/{id}', name: 'app_documentation_show')]
+    public function show($id, DocumentationsRepository $documentationsRepository, DocumentCategoryRepository $documentCategoryRepository): Response
     {
+        $category = $documentCategoryRepository->find($id); // Remplacez par le moyen de récupérer votre catégorie
+    
+        if (!$category) {
+            throw $this->createNotFoundException('Category not found');
+        }
+    
+        $documentations = $documentationsRepository->findBy(['category' => $category]);
+    
         return $this->render('documentations/show.html.twig', [
-            'documentation' => $documentation,
+            'category' => $category,
+            'documentations' => $documentations,
         ]);
     }
 
@@ -94,4 +104,5 @@ class DocumentationsController extends AbstractController
 
         return $this->redirectToRoute('app_documentations_index', [], Response::HTTP_SEE_OTHER);
     }
+
 }

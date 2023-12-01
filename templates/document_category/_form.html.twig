@@ -2,18 +2,17 @@
 <div class="form">
     {{ form_row(form._token) }}
     {{ form_row(form.name, { 'attr': { 'autocomplete': 'off', 'class': 'input', 'placeholder': 'Nom', 'type': 'text' } }) }}
-    {{ form_row(form.category, { 'attr': { 'autocomplete': 'off', 'class': 'input', 'placeholder': 'Lieu', 'type': 'text' } }) }}
     <div class="drop-container" id="dropContainer" dropzone>
         <span class="drop-title" style='color: white;'>Déposez le fichier ici</span>
         <p class="form-paragraph" id="file-name" style='color: white;'>
-            {% if form.pdf.vars.value is not empty %}
-                {{ form.pdf.vars.value.name }}
+            {% if form.img.vars.value is not empty %}
+                {{ form.img.vars.value.name }}
             {% else %}
-                Le fichier doit être un PDF
+                Le fichier doit être une image
             {% endif %}
         </p>
         <label for="file-input" class="drop-area">
-            <input type="file" accept="application/pdf" required="" id="file-input" name="{{ form.pdf.vars.full_name }}" style="display: none;">
+            <input type="file" accept="image/*" required="" id="file-input" name="{{ form.img.vars.full_name }}" style="display: none;">
             <span class="button">Choisir un fichier</span>
         </label>
     </div>
@@ -37,7 +36,7 @@
             document.getElementById('file-name').innerText = fileName;
 
             // Mettre à jour le champ PDF caché avec le nom du fichier
-            document.getElementById('{{ form.pdf.vars.full_name }}').value = fileName;
+            document.getElementById('{{ form.img.vars.full_name }}').value = fileName;
 
             // Soumettre le formulaire
             document.getElementById('my-form').submit();
@@ -66,7 +65,7 @@
             document.getElementById('file-name').innerText = files[0].name;
 
             // Mettez à jour le champ PDF caché avec le nom du fichier
-            document.getElementById('{{ form.pdf.vars.full_name }}').value = files[0].name;
+            document.getElementById('{{ form.img.vars.full_name }}').value = files[0].name;
         }
     });
 
