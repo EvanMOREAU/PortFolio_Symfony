@@ -17,10 +17,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class DocumentationsController extends AbstractController
 {
     #[Route('/', name: 'app_documentations_index', methods: ['GET'])]
-    public function index(DocumentationsRepository $documentationsRepository): Response
+    public function index(DocumentCategoryRepository $documentCategoryRepository): Response
     {
         return $this->render('documentations/index.html.twig', [
-            'documentations' => $documentationsRepository->findAll(),
+            'document_categories' => $documentCategoryRepository->findAll(),
+
         ]);
     }
 

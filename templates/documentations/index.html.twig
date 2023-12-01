@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Documentations index{% endblock %}
+{% block title %}Documentations{% endblock %}
 
 {% block body %}
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/heroes/">
@@ -14,85 +14,29 @@
         <div class="notiborderglow"></div>
         <div class="notititle">Mes documentations</div>
         <div class="notibody">
-            Tout au long de ma formation, j'ai mis un point d'honneur à réaliser des documentations visuellement intéréssantes, 
-            et lisibles. J'ai réalisé ces documentations sur plusieurs plateformes tel que Canva ou Gitbook. Je les mets à disposition, mais je précise 
+            Tout au long de ma formation, j'ai mis un point d'honneur à réaliser des ocumentations visuellement intéréssantes, 
+            et lisibles. J'ai réalisé ces ocumentations sur plusieurs plateformes tel que Canva ou Gitbook. Je les mets à disposition, mais je précise 
             que celles-ci ne sont pas à des fins commerciales.
         </div>
     </div>
-  </center
+  </center>
+  {% for document_categorie in document_categories %}
     <br>
     <div class="container my-5" style='width: 80%; color: white;'>
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-        <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Border hero with cropped image and shadows</h1>
-        <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <h1 class="display-4 fw-bold lh-1 text-body-emphasis">{{ document_categorie.name }}</h1>
+        <p class="lead">{{ document_categorie.description }}</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Primary</button>
-          <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+          <a type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold" href='documentations/doc/{{ document_categorie.id }}'>Voir</a>
+          <a type="button" class="btn btn-outline-secondary btn-lg px-4" href="documentcategory/{{ document_categorie.id }}/edit">Modififier</a>
         </div>
       </div>
       <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-          <img class="rounded-lg-3" src="bootstrap-docs.png" alt="" width="720">
+          <img class="rounded-lg-3" src="/uploads/images/{{ document_categorie.img }}" alt="" width="100%">
       </div>
     </div>
-  </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Pdf</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for documentation in documentations %}
-            <tr>
-                <td>{{ documentation.id }}</td>
-                <td>{{ documentation.name }}</td>
-                <td>{{ documentation.pdf }}</td>
-                <td>
-                    <a href="{{ path('app_documentations_edit', {'id': documentation.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-<div class="accordion accordion-flush" id="accordionFlushExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        Accordion Item #1
-      </button>
-    </h2>
-    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-        Accordion Item #2
-      </button>
-    </h2>
-    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-    </div>
-  </div>
-</div>
-    <a href="{{ path('app_documentations_new') }}">Create new</a>
+  </div> 
+  {% endfor %}
+    {# <a href="{{ path('app_document_categoriess_new') }}">Create new</a> #}
 {% endblock %}

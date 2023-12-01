@@ -2,6 +2,7 @@
 <div class="form">
     {{ form_row(form._token) }}
     {{ form_row(form.name, { 'attr': { 'autocomplete': 'off', 'class': 'input', 'placeholder': 'Nom', 'type': 'text' } }) }}
+    {{ form_row(form.description, { 'attr': { 'autocomplete': 'off', 'class': 'input', 'placeholder': 'Description', 'type': 'text' } }) }}
     <div class="drop-container" id="dropContainer" dropzone>
         <span class="drop-title" style='color: white;'>Déposez le fichier ici</span>
         <p class="form-paragraph" id="file-name" style='color: white;'>
@@ -17,7 +18,7 @@
         </label>
     </div>
 
-    <center><button class="button">Sauvegarder</button></center>
+    <center><button class="button" align='center'>Sauvegarder</button></center>
 </div>
 {{ form_end(form, {'render_rest': false}) }}
 <script>

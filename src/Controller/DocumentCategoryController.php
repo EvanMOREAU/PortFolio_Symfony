@@ -34,17 +34,21 @@ class DocumentCategoryController extends AbstractController
             $profimg = $form->get('img')->getData();
 
             if ($profimg) {
+                dump("1");
                 $fileName = $imageUploaderHelper->uploadImage($form, $documentCategory);
+                dump($fileName);
+                // $documentCategoryRepository->save($documentCategory, true);
             }
 
-            if (isset($profimg)) {
-                $errorMessage =$imageUploaderHelper->uploadImage($form, $documentCategory);
-                if (!empty($errorMessage)) {
-                    $this->addFlash('danger', 'An error has occurred: ' . $errorMessage);
-                }
-                $documentCategoryRepository->save($documentCategory, true);
-            }
-
+            // if (isset($profimg)) {
+            //     dump("2");
+            //     $errorMessage =$imageUploaderHelper->uploadImage($form, $documentCategory);
+            //     if (!empty($errorMessage)) {
+            //         $this->addFlash('danger', 'An error has occurred: ' . $errorMessage);
+            //     }
+            //     $documentCategoryRepository->save($documentCategory, true);
+            // }
+            dump("3");
             $entityManager->persist($documentCategory);
             $entityManager->flush();
 

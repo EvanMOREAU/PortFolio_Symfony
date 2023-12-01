@@ -17,8 +17,6 @@ class StudiesController extends AbstractController
     #[Route('/', name: 'app_studies_index', methods: ['GET'])]
     public function index(StudiesRepository $studiesRepository): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_SUPER_ADMIN');
-
         return $this->render('studies/index.html.twig', [
             'studies' => $studiesRepository->findAll(),
         ]);
