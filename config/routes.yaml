@@ -49,3 +49,6 @@ app_documentations_show:
 app_document_category:
     resource: ../src/Controller/DocumentCategoryController.php
     type: annotation
+app_administration:
+    resource: ../src/Controller/AdministrationController.php
+    type: annotation
